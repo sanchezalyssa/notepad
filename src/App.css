@@ -69,9 +69,9 @@ button:hover {
 .user-container {
     margin: 20px 0;
     padding: 10px;
-    border-radius: 10px;
-    background: #e0e0e0;
-    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    border-radius: 7px;
+    background: linear-gradient(145deg, #cacaca, #f0f0f0);
+    box-shadow: 5px 5px 0px #d9d9d9, -5px -5px 0px #e7e7e7;
 }
 .user-post {
     margin-top: 20px;
@@ -98,4 +98,9 @@ button:hover {
 }
 .delete-icon:hover {
     color: red;
+}
+
+/* dark mode */
+.dark {
+    background-color: #1c1c1c;
 }

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { dummyData } from "./data"
 import { MdDelete } from "react-icons/md"
+import "./toggle.css"
+
 export default function Home() {
     const storage = JSON.parse(localStorage.getItem("infos")) || dummyData
     const [user, setUser] = useState(storage)
@@ -57,10 +59,23 @@ export default function Home() {
             setPostText("")
         }
     }
-
+    const [toggle, setToggle] = useState(false)
+    function handleToggle() {
+        setToggle((prevToggle) => !prevToggle)
+    }
+    const darkModeClass = toggle ? "dark" : ""
     return (
         <>
-            <div className="container">
+            <div className={`container ${darkModeClass}`}>
+                <div className="switch">
+                    <label className="ui-switch">
+                        <input onClick={handleToggle} type="checkbox" />
+                        <div className="slider">
+                            <div className="circle"></div>
+                        </div>
+                    </label>
+                </div>
+
                 <div className="post-container">
                     <textarea value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="What's on your mind?"></textarea>
                     <button onClick={handleClick}>Post</button>
