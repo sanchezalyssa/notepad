@@ -7,7 +7,7 @@ export default function Home() {
 
     const [postText, setPostText] = useState("")
     const [random, setRandomUser] = useState("")
-    const randomNum = Math.floor(Math.random() * 1000) + 2
+
     useEffect(() => {
         localStorage.setItem("infos", JSON.stringify(user))
     }, [user])
@@ -30,13 +30,20 @@ export default function Home() {
             <div className="user-info">
                 <img className="avatar" src={data.img} alt={data.img} />
                 <p className="fname">{data.firstName}</p>
-                <MdDelete className="delete-icon" />
+                <MdDelete onClick={() => handleRemove(data.id)} className="delete-icon" />
             </div>
             <div className="user-post">
                 <p>{data.post}</p>
             </div>
         </div>
     ))
+
+    function handleRemove(id) {
+        const deleteUser = user.filter((data) => data.id !== id)
+        setUser(deleteUser)
+    }
+
+    const randomNum = Math.floor(Math.random() * 1000) + 2
 
     function handleClick() {
         if (postText) {
@@ -54,7 +61,6 @@ export default function Home() {
     return (
         <>
             <div className="container">
-                <h3>Random Post Blog</h3>
                 <div className="post-container">
                     <textarea value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="What's on your mind?"></textarea>
                     <button onClick={handleClick}>Post</button>
