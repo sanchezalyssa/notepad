@@ -8,34 +8,18 @@ export default function Home() {
     const [user, setUser] = useState(storage)
 
     const [postText, setPostText] = useState("")
-    const [random, setRandomUser] = useState("")
 
     useEffect(() => {
         localStorage.setItem("infos", JSON.stringify(user))
     }, [user])
 
-    useEffect(() => {
-        const getRandomInfo = async () => {
-            try {
-                const res = await fetch(`https://random-data-api.com/api/v2/users`)
-                const data = await res.json()
-                setRandomUser(data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        getRandomInfo()
-    }, [])
-
     const dataEls = user.map((data) => (
         <div className="user-container" key={data.id}>
-            <div className="user-info">
-                <img className="avatar" src={data.img} alt={data.img} />
-                <p className="fname">{data.firstName}</p>
-                <MdDelete onClick={() => handleRemove(data.id)} className="delete-icon" />
-            </div>
             <div className="user-post">
-                <p>{data.post}</p>
+                <p className="post">{data.post}</p>
+                <div className="trash box">
+                    <MdDelete onClick={() => handleRemove(data.id)} className="delete-icon" />
+                </div>
             </div>
         </div>
     ))
@@ -50,8 +34,6 @@ export default function Home() {
     function handleClick() {
         if (postText) {
             const newUser = {
-                firstName: random ? random.first_name : "",
-                img: random ? random.avatar : "",
                 post: postText,
                 id: randomNum,
             }
