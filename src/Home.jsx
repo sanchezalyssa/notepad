@@ -17,9 +17,8 @@ export default function Home() {
         <div className="user-container" key={data.id}>
             <div className="user-post">
                 <p className="post">{data.post}</p>
-                <div className="trash box">
-                    <MdDelete onClick={() => handleRemove(data.id)} className="delete-icon" />
-                </div>
+                <div className="trash box"></div>
+                <MdDelete onClick={() => handleRemove(data.id)} className="delete-icon" />
             </div>
         </div>
     ))
