@@ -1,1 +1,1 @@
-![image](https://github.com/sanchezalyssa/random-blog-post/assets/132685558/552ac674-3ff2-4693-b207-01f7b388caa5)
+<h5>Built with React, experience smooth text entry where users can effortlessly input their thoughts and ideas. With a simple and intuitive interface, users can create and delete notes with just a few clicks. Elevate your note-taking experience with Notedpad, where simplicity meets functionality.</h5>
